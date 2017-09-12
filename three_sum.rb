@@ -8,7 +8,7 @@ def three_sums(nums)
     sum = - nums[idx]
     left = idx + 1
     right = nums.length - 1
-    return [] if nums.select {|el| el >= 0}
+    return [] if nums.select {|el| el >= 0}.empty?
     
     while right > left && idx < nums.length
         if nums[left] + nums[right] < sum
