@@ -8,7 +8,16 @@ def three_sums(nums)
     idx = 0
     left = idx + 1
     right = nums.length - 1
-    while right > left
+    
+    while right > left && idx < nums.length
+        if nums[idx] + nums[left] + nums[right] != 0
+            left += 1
+            right -= 1
+        elsif nums[idx] + nums[left] + nums[right] == 0
+            new_arr << [nums[idx], nums[left], nums[right]]
+        end
+    end
+
         
 
 
