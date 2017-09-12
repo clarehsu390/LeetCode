@@ -1,15 +1,15 @@
 # Definition for singly-linked list.
-# class ListNode
-#     attr_accessor :val, :next
-#     def initialize(val)
-#         @val = val
-#         @next = nil
-#     end
-# end
+class ListNode
+    attr_accessor :val, :next
+    def initialize(val)
+        @val = val
+        @next = nil
+    end
+end
 
-# @param {ListNode} l1
-# @param {ListNode} l2
-# @return {ListNode}
+@param {ListNode} l1
+@param {ListNode} l2
+@return {ListNode}
 def merge_two_lists(l1, l2)
     fakehead = ListNode.new(nil)
     fakehead.next = l1
@@ -21,3 +21,5 @@ def merge_two_lists(l1, l2)
     end
     l1
 end
+
+p merge_two_lists([], [0])
