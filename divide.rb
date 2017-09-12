@@ -8,3 +8,5 @@ def divide(dividend, divisor)
 end
 
 p divide(20, 4)
+p divide(30, 5)
+p divide(100, 20)
