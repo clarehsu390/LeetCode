@@ -19,4 +19,4 @@ def remove_duplicates(nums)
 
 end
 
-p remove_duplicates([1,1,2])
+p remove_duplicates([1,1,2, 3, 3])
