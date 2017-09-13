@@ -50,3 +50,11 @@ class MinStack
 
 
 end
+
+stack = MinStack.new
+stack.push(1)
+stack.push(3)
+stack.push(-1)
+p stack
+p stack.top
+p stack.get_min
