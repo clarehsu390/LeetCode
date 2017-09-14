@@ -1,6 +1,6 @@
-#iterate through, check if the letters are the same
-#if so, push that element at that index
-#else push new array
+#create hash, sorted word as key
+#if key exists, push that element into value @ key
+#else create new key value pair
 
 
 def group_anagrams(arr)
