@@ -1,29 +1,29 @@
 #Find all unique triplets in the array which gives the sum of zero.
 
 def three_sums(nums)
-    nums.sort!
-    new_arr = []
-    #three pointers -> current, left, right
-    idx = 0
-    sum = - nums[idx]
-    left = idx + 1
-    right = nums.length - 1
-    return [] if nums.select {|el| el >= 0}.empty?
-    
-    while right > left && idx < nums.length
-        if nums[left] + nums[right] < sum
-            left += 1
-        elsif nums[left] + nums[right] > sum
-            right -= 1
-        elsif nums[idx] + nums[left] + nums[right] == 0
-            new_arr << [nums[idx], nums[left], nums[right]]
-            left += 1
-            right -= 1
+   nums.sort!
+   result = []
+
+   (0..nums.length - 3).each do |i|
+   left = i + 1
+   right = nums.length - 1
+    while left < right
+    sum = nums[i] + nums[left] + nums[right] 
+        
+            if sum == 0
+                result << [nums[i], nums[left], nums[right]] unless result.include?([nums[i], nums[left], nums[right]])
+                left += 1
+                right -= 1
+
+            elsif sum < 0
+                left += 1
+            else
+                right -= 1
+            end
         end
-        idx += 1
     end
 
-    new_arr
+    result
 end
 
 p three_sums([-1, 0, 1, 2, -1, -4])
