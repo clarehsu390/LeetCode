@@ -19,6 +19,7 @@ ROMAN_NUMBERS = {
         n = self
         roman = ""
         ROMAN_NUMBERS.each do |value, letter|
+           next if value > n
             roman << letter * (n/value)
             n = n % value
         end
