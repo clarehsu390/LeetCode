@@ -1,4 +1,6 @@
 def set_zeroes(matrix)
+    i = 0
+    j = 0
 (0..matrix.length - 1).each do |i|
     (0..matrix[0].length - 1).each do |j|
         if matrix[i][j] == 0

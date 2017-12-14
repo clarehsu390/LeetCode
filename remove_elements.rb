@@ -2,10 +2,8 @@ def remove_element(nums, val)
     nums.each do |el|
         nums.delete(el) if el == val
     end
-    nums
+    nums.length
 end
-
-p remove_element([1,2,3,3,2], 3)
 
 
 def remove_element2(nums, val)
@@ -13,5 +11,16 @@ def remove_element2(nums, val)
 end
 
 
-p remove_element2([1,2,3,3,2], 3)
-p remove_element2([3,2,2,3], 3)
+def remove_element3(nums, val)
+    result = []
+    nums.each do |num|
+        result << num if num != val
+    end
+    result.length
+end
+
+
+p remove_element2([1,2,3,3,2], 3) == 3
+p remove_element2([3,2,2,3], 3) == 2
+p remove_element3([1,2,2,3,3], 3) === 3
+p remove_element2([2], 3)
