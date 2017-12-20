@@ -19,4 +19,18 @@ def remove_duplicates(nums)
 
 end
 
+def remove_duplicates2(nums)
+    return [] if head.nil?
+    hash = Hash.new(0)
+    while head
+        if hash[head.val]
+            hash[head.val] += 1
+        else
+            hash[head.val] = 1
+        end
+        head = head.next
+    end
+    hash.keys
+end
+
 p remove_duplicates([1,1,2, 3, 3])

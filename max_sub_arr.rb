@@ -30,3 +30,4 @@ def max_sum_array2(nums)
 end
 
 p max_sum_array2([-2,1,-3,4,-1,2,1,-5,4])
+p max_sum_array2([-2,-1,-2,-4])
