@@ -10,4 +10,4 @@ def add_strings(num1, num2)
     result
 end
 
-p add_strings("521", "10")
+p add_strings("17", "426")
