@@ -5,12 +5,11 @@ def selection_sort(arr)
       if arr[j] < arr[min_idx]
         min_idx = j
       end
-      temp = arr[min_idx]
-      arr[min_idx] = arr[idx]
-      arr[idx] = temp
     end
+    arr[idx], arr[min_idx] = arr[min_idx], arr[idx]
   end
     arr
 end
 
 p selection_sort([3,6,2,6,1])
+p selection_sort([-1,-10,10,9,4,6])
