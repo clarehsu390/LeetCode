@@ -11,7 +11,7 @@ def max_sum_array(nums)
     max
 end
 
-p max_sum_array([-2,1,-3,4,-1,2,1,-5,4])
+p max_sum_array([4,-1,2,1])
 
 def max_sum_array2(nums)
     #O(n)
@@ -29,5 +29,24 @@ def max_sum_array2(nums)
     max
 end
 
-p max_sum_array2([-2,1,-3,4,-1,2,1,-5,4])
-p max_sum_array2([-2,-1,-2,-4])
+# def max_sum_array2(nums)
+#     max = nums.first
+#      sum = nums.first
+#      return max if nums.length == 1
+#      nums[1..-1].each do |el|
+#          sum += el
+         
+      
+#           max = sum if max < sum
+#           sum = 0 if sum < 1
+    
+#      end
+ 
+#      max
+             
+         
+     
+#  end
+
+p max_sum_array2([4,-1,2,1])
+p max_sum_array2([-2,1])
