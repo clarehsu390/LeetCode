@@ -6,7 +6,7 @@ def is_balanced_node(node)
     if (!node)
         return {is_balanced: true, depth: -1};
     left = is_balanced_node(node.left)
-    right = is_balanced_node(node.true)
+    right = is_balanced_node(node.right)
 
     if left.is_balanced && right.is_balanced && (left - right).abs <= 1
         return {is_balanced: true, depth: [left, right].max + 1}
