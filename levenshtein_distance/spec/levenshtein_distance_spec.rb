@@ -20,4 +20,11 @@ describe LevenshteinDistance do
             expect(distance.trie.contains('health')).to be(true)
         end
     end
+
+    describe '#delete_letter' do
+        subject(:distance) { LevenshteinDistance.new([1,3,1,5], 'health', 'hands')}
+        it 'returns intermediate word when letter is deleted' do 
+            expect(distance.delete_letter('health')).to eq('heath')
+        end
+    end
 end

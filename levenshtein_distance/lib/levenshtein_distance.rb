@@ -24,6 +24,11 @@ class LevenshteinDistance
 
     def delete_letter(word)
         word_list = []
+        word.each_char.with_index do |ch, i|
+            modified = word[0...i] + word[i+1..-1]
+            word_list << modified if @trie.contains(modified)
+        end
+        word_list[0]
     end
 
 
