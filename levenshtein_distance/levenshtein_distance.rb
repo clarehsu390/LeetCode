@@ -4,8 +4,11 @@ OPERATIONS = [
     "change",
     "anagram"
 ]
+
+DICTIONARY = File.readlines('words.txt').map {|line| line.to_s}[1]
+p DICTIONARY
 def find_lowest_cost(costs, word1, word2)
-    return costs[-1] if word1.sort === word2.sort
+    return costs[-1] if word1.chars.sort === word2.chars.sort
     
 end
 
@@ -14,7 +17,7 @@ def delete_letter(word)
     word.each_char.with_index do |ch, i|
         word_list << word.delete_at(i)
     end
-    
+
 
 
 
