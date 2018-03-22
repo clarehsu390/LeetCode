@@ -1,7 +1,8 @@
 class TrieNode
+    attr_accessor :children, :char, :is_word
     def initialize(char)
         @char = char
-        is_word?= false
+        @is_word = false
         @children = {}
     end
 
@@ -17,7 +18,8 @@ class Trie
 
     def add(word)
         current_node = @root
-        current_node.each_char do |ch|
+        (0..word.length - 1).each do |index|
+            ch = word[index]
             if current_node.children[ch]
                 current_node = current_node.children[ch]
             else
@@ -26,18 +28,19 @@ class Trie
                 current_node = new_node
             end
         end
-        current_node.is_word?= true
+        current_node.is_word = true
     end
 
     def contains(word)
-        let current_node = @root
-        current_node.each_char do |ch|
+       current_node = @root
+       (0..word.length - 1).each do |index|
+            ch = word[index]
             if current_node.children[ch]
                 current_node = current_node.children[ch]
             else
                 return false
             end
         end
-        return current_node.is_word?
+        return current_node.is_word
     end
 end

@@ -1,0 +1,23 @@
+require 'rspec'
+require 'levenshtein_distance.rb'
+
+describe LevenshteinDistance do
+    describe '#intialize' do
+        subject(:distance) { LevenshteinDistance.new([1,3,1,5], 'health', 'hands')}
+
+        it 'sets up a distance correctly' do 
+            expect(distance.word1).to eq('health')
+            expect(distance.costs).to eq([1,3,1,5])
+        end
+
+        it 'is an instance of Trie class' do
+            expect(distance.trie).to be_a(Trie)
+        end
+    end
+    describe '#dictionary' do
+        subject(:distance) { LevenshteinDistance.new([1,3,1,5], 'health', 'hands')}
+        it 'sets up dictionary properly' do
+            expect(distance.trie.contains('health')).to be(true)
+        end
+    end
+end
