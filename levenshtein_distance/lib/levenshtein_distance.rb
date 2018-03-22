@@ -28,11 +28,20 @@ class LevenshteinDistance
             modified = word[0...i] + word[i+1..-1]
             word_list << modified if @trie.contains(modified)
         end
-        word_list[0]
+        @intermediate = word_list[0]
     end
 
-
-
+    def add_letter(word)
+        word_list = []
+        alphabet = ('a'..'z').to_a
+        alphabet.each do |ch|
+            word.each_char.with_index do |char, i|
+                modified = word[0..i] + ch + word[i+1..-1]
+                word_list << modified if @trie.contains(modified)
+            end
+        end
+        @intermediate = word_list.include?(@word2) ? word2 : word_list[0]
+    end
 end
 
 
