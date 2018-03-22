@@ -5,11 +5,23 @@ OPERATIONS = [
     "anagram"
 ]
 def find_lowest_cost(costs, word1, word2)
-    # costs_hash = {}
-    # (0..3).each do |i|
-    #     operation = OPERATIONS[i]
-    #     costs_hash[operation] = costs[i]
-    # end
+    return costs[-1] if word1.sort === word2.sort
+    
+end
+
+def delete_letter(word)
+    word_list = []
+    word.each_char.with_index do |ch, i|
+        word_list << word.delete_at(i)
+    end
+    
+
+
+
+
+
+end
+def solutions_table(word1, word2, costs)
     raise 'Enter valid inputs' unless word1.is_a?(String) && word2.is_a?(String)
     length1 = word1.length
     length2 = word2.length
@@ -32,12 +44,7 @@ def find_lowest_cost(costs, word1, word2)
         end
     end
 end
-p result
 result[length1][length2] > length1 ? -1 : result[length1][length2]
-
-
-   
-        
 
 end
 
