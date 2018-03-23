@@ -8,14 +8,31 @@ OPERATIONS = [
 require_relative 'trie.rb'
 
 class LevenshteinDistance
-    attr_accessor :word1, :word2, :costs, :trie, :intermediate
+    attr_accessor :word1, :word2, :costs, :trie, :intermediate, :lowest_cost, :solutions_table, :cache
     def initialize(costs, word1, word2)
         @word1 = word1
         @word2 = word2
         @costs = costs
+        @lowest_cost = 0
         @intermediate = ""
+        @cache = []
         @trie = Trie.new()
         @dictionary_file = File.readlines('words.txt').map {|word| dictionary(word.strip)}
+    end
+
+    def find_lowest_cost(word, target)
+        return costs[-1] if @word1.chars.sort == @word2.chars.sort
+        return lowest_cost if @cache[-1] == @word2
+        return -1 if @intermediate.nil?
+        if word.length > @word2.length
+           @cache << delete_letter(word)
+        elsif word.length < @word2.length
+             @cache << add_letter(word)
+        else
+            @cache << swap_letter(word)
+        end
+        p lowest_cost
+        find_lowest_cost(intermediate, word2)
     end
 
     def dictionary(data)
@@ -26,8 +43,9 @@ class LevenshteinDistance
         word_list = []
         word.each_char.with_index do |ch, i|
             modified = word[0...i] + word[i+1..-1]
-            word_list << modified if @trie.contains(modified)
+            word_list << modified if @trie.contains(modified) && !cache.include?(modified)
         end
+        @lowest_cost += costs[1]
         @intermediate = word_list[0]
     end
 
@@ -37,25 +55,34 @@ class LevenshteinDistance
         alphabet.each do |ch|
             word.each_char.with_index do |char, i|
                 modified = word[0..i] + ch + word[i+1..-1]
-                word_list << modified if @trie.contains(modified)
+                word_list << modified if @trie.contains(modified) && !cache.include?(modified)
             end
-        end
+            end
+        @lowest_cost += costs[0]
         @intermediate = word_list.include?(@word2) ? word2 : word_list[0]
     end
+
+    def swap_letter(word)
+        word_list = []
+        alphabet = ('a'..'z').to_a
+        word.each_char.with_index do |char, i|
+            alphabet.each do |ch|
+                modified = word[0...i] + ch + word[i+1..-1]
+                word_list << modified if @trie.contains(modified) && modified != word && !cache.include?(modified)
+            end
+            end
+        @lowest_cost += costs[2]
+        hash = Hash.new(0)
+        word_list.each do |word|
+            word.each_char do |ch|
+            hash[word] += 1 if word2.chars.include?(ch)
+            end
+        end
+         new_hash = hash.select {|k,v| k[0] == @word2[0]}
+         @intermediate = new_hash.max_by {|k,v| v}[0]
+
+    end
 end
-
-
-# def find_lowest_cost(costs, word1, word2)
-#     return costs[-1] if word1.chars.sort === word2.chars.sort
-    
-# end
-
-# def delete_letter(word)
-#     word_list = []
-#     word.each_char.with_index do |ch, i|
-#         word_list << word.delete_at(i)
-#     end
-# end
 
 
 
