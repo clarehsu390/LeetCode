@@ -2,7 +2,7 @@
 
 const circular = (list) => {
     let seenNodes = {};
-    let currentNode = list.head;
+    let currentNode = list.head; //start with the first node in the list
     while (currentNode.next) {
         if (seenNodes[currentNode.data]) {
             return true;
