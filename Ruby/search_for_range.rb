@@ -21,7 +21,7 @@ def search_range2(nums, target)
     left = 0
     right = nums.length - 1
     while left <= right
-        mid = left + (right - left)/2
+        mid = (left + right)/2
         if nums[mid] == target #if this is target -- check for the range
             if nums[left] == target && nums[right] == target
                 return [left, right]
