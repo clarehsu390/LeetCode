@@ -23,3 +23,28 @@ def merge(nums1, m, nums2, n)
 end
 
 p merge([1,2,3], 3, [3,4,5], 3)
+
+def merge_sort(array)
+    return array if array.length <= 1
+    mid = (array.length/2).floor
+    left = merge_sort(array[0...mid])
+    right = merge_sort(array[mid..-1])
+    merge2(left, right)
+end
+
+def merge2(left, right)
+    merged = []
+    while !left.empty? || !right.empty?
+       case (left.pop <=> right.pop)
+       when -1
+        merged << left.pop
+       when 0
+        merged << left.pop
+       when 1
+        merged << right.pop
+       end
+    end
+    merged += left
+    merged += right
+end
+            
