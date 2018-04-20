@@ -10,10 +10,10 @@ def min_depth(root)
     return 0 if root.nil?
     left = min_depth(root.left)
     right = min_depth(root.right)
-    if root.left.nil?
+    if root.left.nil? #if left does not exist
         return right + 1
-    elsif root.right.nil?
+    elsif root.right.nil? #if right does not exist
         return left + 1
     end
-    [left, right].min + 1
+    [left, right].min + 1 #check left and right
 end
