@@ -21,12 +21,12 @@ end
 def detect_cycle2(node)
     fast_node = node.next.next
     slow_node = node
-    while fast_node.next && slow_node
+    while fast_node.next && fast
         if fast_node == slow_node
             return true
         end
         slow_node = slow_node.next
-        fast_node = fast_node.next
+        fast_node = fast_node.next.next
     end
-    false
+   null
 end
