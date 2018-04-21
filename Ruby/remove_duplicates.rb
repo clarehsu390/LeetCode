@@ -34,3 +34,22 @@ def remove_duplicates2(nums)
 end
 
 p remove_duplicates([1,1,2, 3, 3])
+
+def remove_duplicates3(nums)
+    hash = Hash.new(0)
+    count = 0
+
+    nums.each do |num|
+        if hash[num] < 2
+            hash[num] += 1
+        end
+    end
+    hash.each do |k,v|
+        count += v
+    end
+    count
+
+
+end
+
+p remove_duplicates3([1,1,1,2,2,3])
