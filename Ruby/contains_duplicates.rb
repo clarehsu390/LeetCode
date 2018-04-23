@@ -28,7 +28,7 @@ def contains_duplicates4(nums, k)
         if hash[el]
             hash[el] << i
             p hash[el]
-            if hash[el].length == 2
+            if hash[el].length >= 2
                 return true if hash[el][1] - hash[el][0] <= k
             end
         else
